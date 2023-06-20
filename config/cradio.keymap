@@ -53,7 +53,7 @@ ZMK_COMBO(down,  &kp DOWN, 11 13, ALL)
 ZMK_COMBO(up,  &kp RIGHT, 12 13, ALL)
 ZMK_COMBO(up,  &kp LEFT, 11 12, ALL)
 
-ZMK_COMBO(sc,  &Sc, 12 22, ALL)
+ZMK_COMBO(sc,  &scModMorph, 12 22, ALL)
 ZMK_COMBO(up,  &ecomma, 17 27, ALL)
 ZMK_COMBO(bback,  &kp C_AC_BACK, 1 2, ALL)
 ZMK_COMBO(bforward,  &kp C_AC_FORWARD, 2 3, ALL)
@@ -70,7 +70,7 @@ ZMK_BEHAVIOR(hm, hold_tap,
 //macros
 ZMK_BEHAVIOR(ecomma, macro,bindings = <&kp E &kp COMMA>;)
 ZMK_BEHAVIOR(sc, macro,bindings = <&kp S &kp C>;)
-ZMK_BEHAVIOR(Sc, macro,bindings = <&kp LS(S) &kp C >;)
+ZMK_BEHAVIOR(capitalSlowC, macro,bindings = <&kp LS(S) &kp C >;)
 ZMK_BEHAVIOR(bracket, macro,bindings = <&kp DE_LEFT_BRACKET &kp DE_RIGHT_BRACKET &kp LEFT >;)
 ZMK_BEHAVIOR(brace, macro,bindings = <&kp DE_LEFT_BRACE &kp DE_RIGHT_BRACE &kp LEFT >;)
 ZMK_BEHAVIOR(paren, macro,bindings = <&kp DE_LEFT_PARENTHESIS &kp DE_RIGHT_PARENTHESIS &kp LEFT >;)
@@ -78,7 +78,7 @@ ZMK_BEHAVIOR(paren, macro,bindings = <&kp DE_LEFT_PARENTHESIS &kp DE_RIGHT_PAREN
 
 //mod morph
 ZMK_BEHAVIOR(scModMorph, mod_morph,
-    bindings = <&sc>, <&Sc>;
+    bindings = <&sc>, <&capitalSlowC>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
