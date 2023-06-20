@@ -27,7 +27,29 @@
 
 
 
+ZMK_COMBO(copy,  &kp LC(C), 12 13, ALL)
+ZMK_COMBO(pwr,  &kp C_POWER, 0 4, ALL)
+ZMK_COMBO(thumb_bspc,  &kp BSPC, 30 31, ALL)
+ZMK_COMBO(pinky_bspc,  &kp BSPC, 9 19, ALL)
+ZMK_COMBO(quote,&kp DE_DQT, 8 18, ALL)
+ZMK_COMBO(apostroph,  &kp DE_APOS, 0 10, ALL)
 
+ZMK_COMBO(five,  &kp N5, 3 13, ALL)
+ZMK_COMBO(six,  &kp N6, 6 16, ALL)
+ZMK_COMBO(ae,  &kp DE_A_UMLAUT, 10 20, ALL)
+ZMK_COMBO(ue,  &kp DE_U_UMLAUT, 7 17, ALL)
+ZMK_COMBO(oe,  &kp DE_O_UMLAUT, 19 29, ALL)
+
+
+ZMK_COMBO(up,  &kp UP, 11 12 13, ALL)
+ZMK_COMBO(down,  &kp DOWN, 11 13, ALL)
+ZMK_COMBO(up,  &kp RIGHT, 12 13, ALL)
+ZMK_COMBO(up,  &kp LEFT, 11 12, ALL)
+
+ZMK_COMBO(sc,  &capSandlowc, 12 22, ALL)
+ZMK_COMBO(up,  &ecomma, 17 27, ALL)
+ZMK_COMBO(bback,  &kp C_AC_BACK, 1 2, ALL)
+ZMK_COMBO(bforward,  &kp C_AC_FORWARD, 2 3, ALL)
 
 / {
 
@@ -96,29 +118,7 @@ macros {
   ╰───────────╮ 30  31 │ │ 32  33 ╭───────────╯
               ╰────────╯ ╰────────╯            */
 
-ZMK_COMBO(copy,  &kp LC(C), 12 13, ALL)
-ZMK_COMBO(pwr,  &kp C_POWER, 0 4, ALL)
-ZMK_COMBO(thumb_bspc,  &kp BSPC, 30 31, ALL)
-ZMK_COMBO(pinky_bspc,  &kp BSPC, 9 19, ALL)
-ZMK_COMBO(quote,&kp DE_DQT, 8 18, ALL)
-ZMK_COMBO(apostroph,  &kp DE_APOS, 0 10, ALL)
 
-ZMK_COMBO(five,  &kp N5, 3 13, ALL)
-ZMK_COMBO(six,  &kp N6, 6 16, ALL)
-ZMK_COMBO(ae,  &kp DE_A_UMLAUT, 10 20, ALL)
-ZMK_COMBO(ue,  &kp DE_U_UMLAUT, 7 17, ALL)
-ZMK_COMBO(oe,  &kp DE_O_UMLAUT, 19 29, ALL)
-
-
-ZMK_COMBO(up,  &kp UP, 11 12 13, ALL)
-ZMK_COMBO(down,  &kp DOWN, 11 13, ALL)
-ZMK_COMBO(up,  &kp RIGHT, 12 13, ALL)
-ZMK_COMBO(up,  &kp LEFT, 11 12, ALL)
-
-ZMK_COMBO(sc,  &capSandlowc, 12 22, ALL)
-ZMK_COMBO(up,  &ecomma, 17 27, ALL)
-ZMK_COMBO(bback,  &kp C_AC_BACK, 1 2, ALL)
-ZMK_COMBO(bforward,  &kp C_AC_FORWARD, 2 3, ALL)
 
 
 
