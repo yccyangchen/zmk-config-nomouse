@@ -1,4 +1,4 @@
-/*
+tetereterrsrsrsrsrsrsrsrsrsrsrsrsrs/*
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
@@ -60,7 +60,7 @@ ZMK_COMBO(bforward,  &kp C_AC_FORWARD, 2 3, ALL)
 
 //home row mods
 ZMK_BEHAVIOR(hm, hold_tap,
-    flavor = "balanced";
+    flavor = "tap-preferred";
     tapping-term-ms = <280>;
     quick-tap-ms = <125>;
     global-quick-tap;
