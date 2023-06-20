@@ -30,48 +30,6 @@
 
 
 / {
-  ZMK_MACRO(m_a,
-        wait-ms = <0>;
-        tap-ms = <TAPPING_TIME>;
-        bindings = <&kp A>;
-    )
-    ZMK_MACRO(m_r,
-        wait-ms = <0>;
-        tap-ms = <TAPPING_TIME>;
-        bindings = <&kp R>;
-    )
-    ZMK_MACRO(m_s,
-        wait-ms = <0>;
-        tap-ms = <TAPPING_TIME>;
-        bindings = <&kp S>;
-    )
-    ZMK_MACRO(m_t,
-        wait-ms = <0>;
-        tap-ms = <TAPPING_TIME>;
-        bindings = <&kp T>;
-    )
-   
-    ZMK_MACRO(m_n,
-        wait-ms = <0>;
-        tap-ms = <TAPPING_TIME>;
-        bindings = <&kp N>;
-    )
-    ZMK_MACRO(m_e,
-        wait-ms = <0>;
-        tap-ms = <TAPPING_TIME>;
-        bindings = <&kp E>;
-    )
-    ZMK_MACRO(m_i,
-        wait-ms = <0>;
-        tap-ms = <TAPPING_TIME>;
-        bindings = <&kp I>;
-    )
-    ZMK_MACRO(m_o,
-        wait-ms = <0>;
-        tap-ms = <TAPPING_TIME>;
-        bindings = <&kp O>;
-    )
-
 
 macros {
  
@@ -151,6 +109,11 @@ combos {
             key-positions = <30 31>;
             bindings = <&kp BSPC>;
         };
+        combo_back_pinky {
+            timeout-ms = <100>;
+            key-positions = <9 19>;
+            bindings = <&kp BSPC>;
+        };
         combo_quote {
             timeout-ms = <50>;
             key-positions = <8 18>;
@@ -161,12 +124,12 @@ combos {
             key-positions = <0 10>;
             bindings = <&kp LS(BACKSLASH)>;
         };
-        combo_semic {
+        combo_six {
             timeout-ms = <50>;
             key-positions = <6 16>;
             bindings = <&kp N6>;
         };
-        combo_double {
+        combo_five {
             timeout-ms = <50>;
             key-positions = <3 13>;
             bindings = <&kp N5>;
@@ -242,87 +205,14 @@ combos {
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
    
-hma: homerow_modsa {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODSa";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            global-quick-tap;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&m_a>;
-        };
-hmr: homerow_modsr {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODSr";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            global-quick-tap;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&m_r>;
-        };
 
-hms: homerow_modss {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODSs";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            global-quick-tap;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&m_s>;
-        };
-hmt: homerow_modst {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODSt";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            global-quick-tap;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&m_t>;
-        };
-
-hmn: homerow_modsn {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODSn";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            global-quick-tap;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&m_n>;
-        };
-hme: homerow_modse {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODSe";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            global-quick-tap;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&m_e>;
-        };    
-hmi: homerow_modsi {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODSi";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            global-quick-tap;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&m_i>;
-        };
-hmo: homerow_modso {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODSo";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            global-quick-tap;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&m_o>;
-        };
 
     
 hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <300>;
+            tapping-term-ms = <200>;
             global-quick-tap;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
@@ -336,11 +226,11 @@ hm: homerow_mods {
     base_layer {
       bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-                 &kp Q      &hm ESC W    &hm LSHIFT F    &kp P         &kp B             &kp J          &kp L        &kp U      &hm ESC Z    &kp LC(BSPC)
+                 &kp Q      &hm ESC W    &hm LSHIFT F    &kp P         &kp B             &kp J          &kp L        &kp U       &hm ESC Z     &kp LC(BSPC)
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-            &hma LCTRL A    &hmr LGUI R   &hms RET S   &hmt LALT T   &hm MINUS G         &kp M     &hmn RSHFT N  &hme LALT E   &hmi LGUI I   &hmo RCTRL O
+            &hm LCTRL A     &hm LGUI R   &hm RET S     &hm LALT T    &hm MINUS G         &kp M       &hm RSHFT N   &hm LALT E    &hm LGUI I    &hm RCTRL O
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &lt NUMPAD Y  &hm LALT X      &kp C      &hm LCTRL D  &hm LA(F4) V        &kp K       &hm RALT H    &kp COMMA     &kp DOT     &kp LS(MINUS)
+             &lt NUMPAD Y   &hm LALT X      &kp C      &hm LCTRL D   &hm LA(F4) V        &kp K       &hm RALT H    &kp COMMA     &kp DOT     &kp LS(MINUS)
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                                        &lt NAV TAB   &kp LSHFT          &lt SYM SPC   &lt SYM SPC
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
