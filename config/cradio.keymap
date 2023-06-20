@@ -34,7 +34,7 @@
   ╰───────────╮ 30  31 │ │ 32  33 ╭───────────╯
               ╰────────╯ ╰────────╯            */
 
-ZMK_COMBO(copy,  &kp LC(C), 12 13, ALL)
+
 ZMK_COMBO(pwr,  &kp C_POWER, 0 4, ALL)
 ZMK_COMBO(thumb_bspc,  &kp BSPC, 30 31, ALL)
 ZMK_COMBO(pinky_bspc,  &kp BSPC, 9 19, ALL)
