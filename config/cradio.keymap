@@ -78,7 +78,7 @@ ZMK_BEHAVIOR(paren, macro,bindings = <&kp DE_LEFT_PARENTHESIS &kp DE_RIGHT_PAREN
 
 //mod morph
 ZMK_BEHAVIOR(capSandlowc, mod_morph,
-    bindings = <&sc>, <&capssc>;
+    bindings = <&sc>, <&Sc>;
     mods = <(MOD_LSFT|MOD_RSFT)>;
 )
 
