@@ -95,8 +95,7 @@ macros {
   │ 20  21  22  23  24 │ │ 25  26  27  28  29 │
   ╰───────────╮ 30  31 │ │ 32  33 ╭───────────╯
               ╰────────╯ ╰────────╯            */
-undef COMBO_TERM
-#define COMBO_TERM 50
+
 ZMK_COMBO(copy,  &kp LC(C), 12 13, ALL)
 ZMK_COMBO(pwr,  &kp C_POWER, 0 4, ALL)
 ZMK_COMBO(thumb_bspc,  &kp BSPC, 30 31, ALL)
