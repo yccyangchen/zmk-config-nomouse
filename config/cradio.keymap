@@ -1,4 +1,4 @@
-tetereterrsrsrsrsrsrsrsrsrsrsrsrsrs/*
+/*
  * Copyright (c) 2020 The ZMK Contributors
  *
  * SPDX-License-Identifier: MIT
@@ -50,8 +50,8 @@ ZMK_COMBO(oe,  &kp DE_O_UMLAUT, 19 29, ALL)
 
 ZMK_COMBO(up,  &kp UP, 11 12 13, ALL)
 ZMK_COMBO(down,  &kp DOWN, 11 13, ALL)
-ZMK_COMBO(up,  &kp RIGHT, 12 13, ALL)
-ZMK_COMBO(up,  &kp LEFT, 11 12, ALL)
+ZMK_COMBO(right,  &kp RIGHT, 12 13, ALL)
+ZMK_COMBO(left,  &kp LEFT, 11 12, ALL)
 
 ZMK_COMBO(scCombo,  &scModMorph, 12 22, ALL)
 ZMK_COMBO(up,  &ecomma, 17 27, ALL)
