@@ -58,7 +58,7 @@ ZMK_COMBO(ecommaCombo,  &ecomma, 17 27, ALL)
 
 //home row mods
 ZMK_BEHAVIOR(hm, hold_tap,
-    flavor = "balanced";
+    flavor = "tap-preferred";
     tapping-term-ms = <280>;
     quick-tap-ms = <125>;
     global-quick-tap;
