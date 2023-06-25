@@ -37,15 +37,15 @@
 
 ZMK_COMBO(pwr,  &kp C_POWER, 0 4, ALL)
 ZMK_COMBO(thumb_bspc,  &kp BSPC, 30 31, ALL)
-ZMK_COMBO(pinky_bspc,  &kp BSPC, 9 19, ALL)
+
 ZMK_COMBO(quote,&kp DE_DQT, 8 18, ALL)
 ZMK_COMBO(apostroph,  &kp DE_APOS, 0 10, ALL)
 
 ZMK_COMBO(five,  &kp N5, 3 13, ALL)
 ZMK_COMBO(six,  &kp N6, 6 16, ALL)
-ZMK_COMBO(ae,  &kp DE_A_UMLAUT, 10 20, ALL)
+ZMK_COMBO(ae,  &kp DE_A_UMLAUT, 10 17, ALL)
 ZMK_COMBO(ue,  &kp DE_U_UMLAUT, 7 17, ALL)
-ZMK_COMBO(oe,  &kp DE_O_UMLAUT, 19 29, ALL)
+ZMK_COMBO(oe,  &kp DE_O_UMLAUT, 17 19, ALL)
 
 
 ZMK_COMBO(up,  &kp UP, 11 12 13, ALL)
@@ -89,11 +89,11 @@ ZMK_BEHAVIOR(scModMorph, mod_morph,
     base_layer {
       bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-                 &kp Q      &hm ESC W    &hm LSHIFT F    &kp P         &kp B             &kp J          &kp L        &kp U       &hm ESC Z     &kp LC(BSPC)
+                 &kp Q      &hm ESC W    &hm LSHIFT F    &kp P         &kp B             &kp J          &kp L        &kp U       &hm ESC DE_Y  &kp LC(BSPC)
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
             &hm LCTRL A     &hm LGUI R   &hm RET S     &hm LALT T    &hm DE_SZ G         &kp M       &hm RSHFT N   &hm LALT E    &hm LGUI I    &hm RCTRL O
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-             &lt NUMPAD Y   &hm LALT X      &kp C      &hm LCTRL D   &hm LA(F4) V        &kp K       &hm RALT H    &kp COMMA     &kp DOT     &kp LS(MINUS)
+          &lt NUMPAD DE_Z   &hm LALT X      &kp C      &hm LCTRL D   &hm LA(F4) V        &kp K       &hm RALT H    &kp COMMA     &kp DOT       &kp BSPC
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                                        &lt NAV TAB   &kp LSHFT          &lt SYM SPC   &lt SYM SPC
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
@@ -118,11 +118,11 @@ ZMK_BEHAVIOR(scModMorph, mod_morph,
     sym_layer {
       bindings = <
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-               &kp F11       &kp F12   &kp NON_US_HASH &kp NON_US_BACKSLASH &kp DE_CARET &bracket      &brace         &paren     &kp RA(MINUS)     ___
+               &kp F11       &kp F12   &kp DE_HASH &kp DE_LESS_THAN &kp DE_CARET &bracket      &brace         &paren     &kp RA(MINUS)     ___
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
                &hm F1 N1    &hm F2 N2    &hm F3 N3      &hm F4 N4        ___               ___      &hm F7 N7    &hm F8 N8    &hm F9 N9     &hm F10 N0
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                 ___           ___           ___        &kp RBKT     &kp MINUS         &kp EQUAL     &kp SLASH         ___           ___           ___
+                 ___           ___           ___        &kp DE_PLUS  &kp DE_QMARK      &kp DE_ACUTE &kp DE_MINUS       ___           ___           ___
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                                                            ___           ___               ___          ___
         //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
