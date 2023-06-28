@@ -36,7 +36,6 @@
 
 
 ZMK_COMBO(pwr,  &kp C_POWER, 0 4, ALL)
-ZMK_COMBO(thumb_bspc,  &kp BSPC, 30 31, ALL)
 
 ZMK_COMBO(quote,&kp DE_DQT, 8 18, ALL)
 ZMK_COMBO(apostroph,  &kp DE_APOS, 0 10, ALL)
