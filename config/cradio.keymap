@@ -66,8 +66,18 @@ ZMK_BEHAVIOR(hm, hold_tap,
 
 //macros
 ZMK_BEHAVIOR(ecomma, macro,bindings = <&kp E &kp COMMA>;)
-ZMK_BEHAVIOR(sc, macro,bindings = <&kp S &kp C>;)
-ZMK_BEHAVIOR(capitalSlowC, macro,bindings = <&kp LS(S) &kp C >;)
+
+    ZMK_MACRO(sc,
+        wait-ms = <0>;
+        tap-ms = <0>;
+        bindings = <&kp S &kp C>;
+    )
+        ZMK_MACRO(capitalSlowC,
+        wait-ms = <0>;
+        tap-ms = <0>;
+        bindings = <&kp LS(S) &kp C>;
+    )
+
 ZMK_BEHAVIOR(bracket, macro,bindings = <&kp DE_LEFT_BRACKET &kp DE_RIGHT_BRACKET &kp LEFT >;)
 ZMK_BEHAVIOR(brace, macro,bindings = <&kp DE_LEFT_BRACE &kp DE_RIGHT_BRACE &kp LEFT >;)
 ZMK_BEHAVIOR(paren, macro,bindings = <&kp DE_LEFT_PARENTHESIS &kp DE_RIGHT_PARENTHESIS &kp LEFT >;)
