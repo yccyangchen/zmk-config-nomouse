@@ -124,7 +124,7 @@ ZMK_BEHAVIOR(cpp, macro,
     wait-ms = <10>;
     tap-ms = <10>;
     bindings = <&cppone &cpptwo &cppthree &cppfour &cppfive &cppsix>;)
-
+ 
 
 //mod morph
 ZMK_BEHAVIOR(scModMorph, mod_morph,
