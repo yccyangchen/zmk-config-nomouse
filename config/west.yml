@@ -4,7 +4,7 @@ manifest:
       url-base: https://github.com/lucordes
   projects:
     - name: zmk
-      remote: lucordes
+      remote: main
       revision: main
       import: app/west.yml
   self:
