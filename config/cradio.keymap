@@ -95,7 +95,7 @@ ZMK_BEHAVIOR(paren, macro,
 ZMK_BEHAVIOR(test, macro,
     wait-ms = <0>;
     tap-ms = <2>;
-    bindings = < &kp RET &kp DE_POUND &kp DE_I &kp DE_N &kp DE_C &kp DE_L &kp DE_U &kp DE_D &kp DE_E  &kp DE_DQT &kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_G) &kp DE_E &kp DE_N &kp DE_E &kp DE_R &kp DE_A &kp DE_T &kp DE_O &kp DE_R &kp DE_N4 &kp DE_DOT &kp DE_H &kp DE_DQT &kp RET &kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_G) &kp DE_E &kp DE_N &kp DE_E &kp DE_R &kp DE_A &kp DE_T &kp DE_O &kp DE_R &kp DE_N4 &kp DE_COLON &kp DE_COLON &kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_G) >;)
+    bindings = < &kp RET &kp DE_POUND &kp DE_I &kp DE_N &kp DE_C &kp DE_L &kp DE_U &kp DE_D &kp DE_E  &kp DE_DQT &kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_G) &kp DE_E &kp DE_N &kp DE_E &kp DE_R &kp DE_A &kp DE_T &kp DE_O &kp DE_R &kp DE_N4 &kp DE_DOT &kp DE_H &kp DE_DQT &kp RET &kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_G) &kp DE_E &kp DE_N &kp DE_E &kp DE_R &kp DE_A &kp DE_T &kp DE_O &kp DE_R &kp DE_N4 &kp DE_COLON &kp DE_COLON &kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_G) &kp DE_E &kp DE_N &kp DE_E &kp DE_R &kp DE_A &kp DE_T &kp DE_O &kp DE_R &kp DE_N4 &kp DE_LPAR &kp DE_U &kp DE_I &kp DE_N &kp DE_T &kp DE_N1 &kp DE_N6 &kp DE_UNDER &kp DE_T  &kp DE_P &kp DE_E &kp DE_R &kp DE_I &kp DE_O &kp DE_D &kp DE_RPAR  &kp DE_LBRC &kp RET >;)
 ZMK_BEHAVIOR(cpp, macro,
     wait-ms = <0>;
     tap-ms = <0>;
