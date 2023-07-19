@@ -65,6 +65,62 @@ ZMK_BEHAVIOR(hm, hold_tap,
     global-quick-tap;
     bindings = <&kp>, <&kp>;
 )
+ZMK_BEHAVIOR(hma, hold_tap,
+    flavor = "tap-preferred";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    global-quick-tap;
+    bindings = <&kp>, <&amac>;
+)
+ZMK_BEHAVIOR(hmr, hold_tap,
+    flavor = "tap-preferred";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    global-quick-tap;
+    bindings = <&kp>, <&rmac>;
+)
+ZMK_BEHAVIOR(hms, hold_tap,
+    flavor = "tap-preferred";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    global-quick-tap;
+    bindings = <&kp>, <&smac>;
+)
+ZMK_BEHAVIOR(hmt, hold_tap,
+    flavor = "tap-preferred";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    global-quick-tap;
+    bindings = <&kp>, <&tmac>;
+)
+ZMK_BEHAVIOR(hmn, hold_tap,
+    flavor = "tap-preferred";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    global-quick-tap;
+    bindings = <&kp>, <&nmac>;
+)
+ZMK_BEHAVIOR(hme, hold_tap,
+    flavor = "tap-preferred";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    global-quick-tap;
+    bindings = <&kp>, <&emac>;
+)
+ZMK_BEHAVIOR(hmi, hold_tap,
+    flavor = "tap-preferred";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    global-quick-tap;
+    bindings = <&kp>, <&imac>;
+)
+ZMK_BEHAVIOR(hmo, hold_tap,
+    flavor = "tap-preferred";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <125>;
+    global-quick-tap;
+    bindings = <&kp>, <&omac>;
+)
 
 //macros
 
@@ -150,6 +206,40 @@ ZMK_BEHAVIOR(cpp, macro,
     bindings = <&cppfive &cppsix>;)
  
 
+ ZMK_BEHAVIOR(amac, macro,
+    wait-ms = <0>;
+    tap-ms = <10>;
+    bindings = <&kp A>;)
+     ZMK_BEHAVIOR(rmac, macro,
+    wait-ms = <0>;
+    tap-ms = <10>;
+    bindings = <&kp R>;)
+     ZMK_BEHAVIOR(smac, macro,
+    wait-ms = <0>;
+    tap-ms = <10>;
+    bindings = <&kp S>;)
+     ZMK_BEHAVIOR(tmac, macro,
+    wait-ms = <0>;
+    tap-ms = <10>;
+    bindings = <&kp T>;)
+     ZMK_BEHAVIOR(nmac, macro,
+    wait-ms = <0>;
+    tap-ms = <10>;
+    bindings = <&kp N>;)
+     ZMK_BEHAVIOR(emac, macro,
+    wait-ms = <0>;
+    tap-ms = <10>;
+    bindings = <&kp E>;)
+     ZMK_BEHAVIOR(imac, macro,
+    wait-ms = <0>;
+    tap-ms = <10>;
+    bindings = <&kp I>;)
+     ZMK_BEHAVIOR(omac, macro,
+    wait-ms = <0>;
+    tap-ms = <10>;
+    bindings = <&kp O>;)
+
+
 //mod morph
 ZMK_BEHAVIOR(scModMorph, mod_morph,
     bindings = <&sc>, <&capitalSlowC>;
@@ -169,7 +259,7 @@ ZMK_BEHAVIOR(scModMorph, mod_morph,
         // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
                  &kp Q      &hm ESC W    &hm LSHIFT F    &kp P         &kp B             &kp J          &kp L        &kp U       &hm ESC DE_Y  &kp LC(BSPC)
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-            &hm LCTRL A     &hm LGUI R   &hm RET S     &hm LALT T    &hm DE_SZ G         &kp M       &hm RSHFT N   &hm LALT E    &hm LGUI I    &hm RCTRL O
+            &hma LCTRL A     &hmr LGUI R   &hms RET S  &hmt LALT T    &hm DE_SZ G         &kp M       &hmn RSHFT N   &hme LALT E   &hmi LGUI I    &hmo RCTRL O
         // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
           &lt NUMPAD DE_Z   &hm LALT X      &kp C      &hm LCTRL D   &hm LA(F4) V        &kp K       &hm RALT H    &kp COMMA     &kp DOT       &kp BSPC
         // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
