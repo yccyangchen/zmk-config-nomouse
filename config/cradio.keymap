@@ -12,7 +12,7 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include "keys_de.h"
 #include "../zmk-nodefree-config/helper.h"
-
+//this is the first commit
 
 
 
