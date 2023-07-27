@@ -1,328 +1,104 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
+// Copyright (c) 2022 The ZMK Contributors
+// SPDX-License-Identifier: MIT
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
 
-#include <dt-bindings/zmk/ext_power.h>
-#include "keys_de.h"
-#include "../zmk-nodefree-config/helper.h"
-//this is the first commit
-
-
-
-#define XXX &none
-#define ___ &trans
-
-#define BASE 0
-#define NAV 1
-#define SYM 2
-#define NUMPAD 3 
-#define ADJ 4
-
-
-        /*                KEY POSITIONS
-  ╭────────────────────╮ ╭────────────────────╮
-  │  0   1   2   3   4 │ │  5   6   7   8   9 │
-  │ 10  11  12  13  14 │ │ 15  16  17  18  19 │
-  │ 20  21  22  23  24 │ │ 25  26  27  28  29 │
-  ╰───────────╮ 30  31 │ │ 32  33 ╭───────────╯
-              ╰────────╯ ╰────────╯            */
-
-
-ZMK_COMBO(pwr,  &kp C_POWER, 0 4, ALL)
-ZMK_COMBO(f23,  &kp F23, 10 20, ALL)
-ZMK_COMBO(f24,  &kp F24, 19 29, ALL)
-
-ZMK_COMBO(quote,&kp DE_DQT, 8 18, ALL)
-ZMK_COMBO(apostroph,  &kp DE_APOS, 0 10, ALL)
-
-ZMK_COMBO(five,  &kp N5, 3 13, ALL)
-ZMK_COMBO(six,  &kp N6, 6 16, ALL)
-ZMK_COMBO(ae,  &kp DE_A_UMLAUT, 10 17, ALL)
-ZMK_COMBO(ue,  &kp DE_U_UMLAUT, 7 17, ALL)
-ZMK_COMBO(oe,  &kp DE_O_UMLAUT, 17 19, ALL)
-
-
-ZMK_COMBO(up,  &kp UP, 11 12 13, ALL)
-ZMK_COMBO(down,  &kp DOWN, 11 13, ALL)
-ZMK_COMBO(right,  &kp RIGHT, 12 13, ALL)
-ZMK_COMBO(left,  &kp LEFT, 11 12, ALL)
-
-ZMK_COMBO(scCombo,  &scModMorph, 12 22, ALL)
-ZMK_COMBO(ecommaCombo,  &ecomma, 17 27, ALL)
-
-//home row mods
-ZMK_BEHAVIOR(hm, hold_tap,
-    flavor = "tap-preferred";
-    tapping-term-ms = <280>;
-    quick-tap-ms = <125>;
-    global-quick-tap;
-    bindings = <&kp>, <&kp>;
-)
-ZMK_BEHAVIOR(hma, hold_tap,
-    flavor = "tap-preferred";
-    tapping-term-ms = <280>;
-    quick-tap-ms = <125>;
-    global-quick-tap;
-    bindings = <&kp>, <&amac>;
-)
-ZMK_BEHAVIOR(hmr, hold_tap,
-    flavor = "tap-preferred";
-    tapping-term-ms = <280>;
-    quick-tap-ms = <125>;
-    global-quick-tap;
-    bindings = <&kp>, <&rmac>;
-)
-ZMK_BEHAVIOR(hms, hold_tap,
-    flavor = "tap-preferred";
-    tapping-term-ms = <280>;
-    quick-tap-ms = <125>;
-    global-quick-tap;
-    bindings = <&kp>, <&smac>;
-)
-ZMK_BEHAVIOR(hmt, hold_tap,
-    flavor = "tap-preferred";
-    tapping-term-ms = <280>;
-    quick-tap-ms = <125>;
-    global-quick-tap;
-    bindings = <&kp>, <&tmac>;
-)
-ZMK_BEHAVIOR(hmn, hold_tap,
-    flavor = "tap-preferred";
-    tapping-term-ms = <280>;
-    quick-tap-ms = <125>;
-    global-quick-tap;
-    bindings = <&kp>, <&nmac>;
-)
-ZMK_BEHAVIOR(hme, hold_tap,
-    flavor = "tap-preferred";
-    tapping-term-ms = <280>;
-    quick-tap-ms = <125>;
-    global-quick-tap;
-    bindings = <&kp>, <&emac>;
-)
-ZMK_BEHAVIOR(hmi, hold_tap,
-    flavor = "tap-preferred";
-    tapping-term-ms = <280>;
-    quick-tap-ms = <125>;
-    global-quick-tap;
-    bindings = <&kp>, <&imac>;
-)
-ZMK_BEHAVIOR(hmo, hold_tap,
-    flavor = "tap-preferred";
-    tapping-term-ms = <280>;
-    quick-tap-ms = <125>;
-    global-quick-tap;
-    bindings = <&kp>, <&omac>;
-)
-
-//macros
-
-    
-ZMK_BEHAVIOR(ecomma, macro,
-    wait-ms = <0>;
-    tap-ms = <0>;
-    bindings = <&kp E &kp COMMA>;)
-ZMK_BEHAVIOR(sc, macro,
-    wait-ms = <0>;
-    tap-ms = <0>;
-    bindings = <&kp S &kp C>;)
-
-ZMK_BEHAVIOR(capitalSlowC, macro,
-    wait-ms = <0>;
-    tap-ms = <0>;
-    bindings = <&kp LS(S) &kp C >;)
-ZMK_BEHAVIOR(bracket, macro,
-    wait-ms = <0>;
-    tap-ms = <0>;
-    bindings = <&kp DE_LEFT_BRACKET &kp DE_RIGHT_BRACKET &kp LEFT >;)
-ZMK_BEHAVIOR(brace, macro,
-    wait-ms = <0>;
-    tap-ms = <0>;
-    bindings = <&kp DE_LEFT_BRACE &kp DE_RIGHT_BRACE &kp LEFT >;)
-ZMK_BEHAVIOR(paren, macro,
-    wait-ms = <0>;
-    tap-ms = <0>;
-    bindings = <&kp DE_LEFT_PARENTHESIS &kp DE_RIGHT_PARENTHESIS &kp LEFT >;)
-ZMK_BEHAVIOR(cppone, macro,
-    wait-ms = <10>;
-    tap-ms = <10>;
-    bindings = < &kp DE_POUND &kp DE_I &kp DE_N &kp DE_C &kp DE_L &kp DE_U &kp DE_D &kp DE_E &kp DE_SPACE&kp DE_DQT &kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp DE_N4 &kp DE_DOT &kp DE_H &kp DE_DQT &kp RET &kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp DE_N4 &kp DE_COLON &kp DE_COLON &kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp DE_N4 &kp DE_LPAR &kp DE_U &kp DE_I &kp DE_N &kp DE_T &kp DE_N1 &kp DE_N6 &kp DE_UNDER &kp DE_T &kp DE_SPACE&kp DE_P &kp DE_E &kp DE_R &kp DE_I &kp DE_O &kp DE_D &kp DE_RPAR &kp DE_SPACE&kp DE_LBRC &kp RET  &kp DE_M &kp DE_UNDER &kp DE_P &kp DE_W &kp DE_M &kp LS(DE_O) &kp DE_U &kp DE_T &kp DE_EQUAL &kp DE_N0 &kp DE_SEMI &kp RET  &kp LS(DE_R) &kp LS(DE_C) &kp LS(DE_C) &kp DE_MINUS &kp DE_GT &kp LS(DE_A) &kp LS(DE_P) &kp LS(DE_B) &kp DE_N1 &kp LS(DE_E) &kp LS(DE_N) &kp LS(DE_R) &kp DE_SPACE&kp DE_PIPE &kp DE_EQUAL &kp DE_SPACE&kp LS(DE_R) &kp LS(DE_C) &kp LS(DE_C) &kp DE_UNDER &kp LS(DE_A) &kp LS(DE_P) &kp LS(DE_B) &kp DE_N1 &kp LS(DE_E) &kp LS(DE_N) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp LS(DE_E) &kp LS(DE_N) &kp DE_SEMI &kp RET  &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_A) &kp LS(DE_R) &kp LS(DE_R) &kp DE_SPACE&kp DE_EQUAL &kp DE_SPACE&kp DE_P &kp DE_E &kp DE_R &kp DE_I &kp DE_O &kp DE_D &kp DE_SEMI &kp RET  &kp DE_S &kp DE_E &kp DE_T &kp LS(DE_D) &kp DE_U &kp DE_T &kp DE_Y &kp LS(DE_C) &kp DE_Y &kp DE_C &kp DE_L &kp DE_E &kp DE_LPAR &kp DE_N0 &kp DE_RPAR &kp DE_SEMI &kp RET  &kp DE_C &kp DE_O &kp DE_N &kp DE_F &kp DE_I &kp DE_G &kp DE_U &kp DE_R &kp DE_E &kp LS(DE_G) &kp DE_P &kp DE_I &kp DE_O &kp LS(DE_P) &kp DE_I &kp DE_N &kp DE_LPAR &kp DE_RPAR &kp DE_SEMI &kp RET  &kp DE_C &kp DE_O &kp DE_N &kp DE_F &kp DE_I &kp DE_G &kp DE_U &kp DE_R &kp DE_E &kp LS(DE_T) &kp DE_I &kp DE_M &kp DE_E &kp DE_R &kp DE_LPAR &kp DE_RPAR &kp DE_SEMI &kp RET  &kp DE_C &kp DE_O &kp DE_N &kp DE_F &kp DE_I &kp DE_G &kp DE_U &kp DE_R &kp DE_E &kp LS(DE_I) &kp DE_N &kp DE_T &kp DE_E &kp DE_R &kp DE_R &kp DE_U &kp DE_P &kp DE_T &kp DE_LPAR &kp DE_RPAR &kp DE_SEMI &kp RET &kp DE_RBRC &kp RET &kp DE_V &kp DE_O &kp DE_I &kp DE_D &kp DE_SPACE&kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp DE_N4 &kp DE_COLON &kp DE_COLON &kp DE_C &kp DE_O &kp DE_N &kp DE_F &kp DE_I &kp DE_G &kp DE_U &kp DE_R &kp DE_E &kp LS(DE_G) &kp DE_P &kp DE_I &kp DE_O &kp LS(DE_P) &kp DE_I &kp DE_N &kp DE_LPAR &kp DE_RPAR &kp DE_SPACE&kp DE_LBRC  >;)
-ZMK_BEHAVIOR(cpptwo, macro,
-    wait-ms = <0>;
-    tap-ms = <10>;
-    bindings = < &kp LS(DE_M) &kp LS(DE_O) &kp LS(DE_D) &kp LS(DE_I) &kp LS(DE_F) &kp LS(DE_Y) &kp DE_UNDER &kp LS(DE_R) &kp LS(DE_E) &kp LS(DE_G) &kp DE_LPAR &kp LS(DE_G) &kp LS(DE_P) &kp LS(DE_I) &kp LS(DE_O) &kp LS(DE_C) &kp DE_MINUS &kp DE_GT &kp LS(DE_M) &kp LS(DE_O) &kp LS(DE_D) &kp LS(DE_E) &kp LS(DE_R) &kp DE_COMMA &kp DE_SPACE&kp LS(DE_G) &kp LS(DE_P) &kp LS(DE_I) &kp LS(DE_O) &kp DE_UNDER &kp LS(DE_M) &kp LS(DE_O) &kp LS(DE_D) &kp LS(DE_E) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_M) &kp LS(DE_O) &kp LS(DE_D) &kp LS(DE_E) &kp DE_N6 &kp DE_COMMA &kp DE_SPACE&kp DE_N2 &kp DE_SPACE&kp DE_LT &kp DE_LT &kp DE_SPACE&kp LS(DE_G) &kp LS(DE_P) &kp LS(DE_I) &kp LS(DE_O) &kp DE_UNDER &kp LS(DE_M) &kp LS(DE_O) &kp LS(DE_D) &kp LS(DE_E) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_M) &kp LS(DE_O) &kp LS(DE_D) &kp LS(DE_E) &kp DE_N6 &kp DE_UNDER &kp LS(DE_P) &kp DE_O &kp DE_S &kp DE_RPAR &kp DE_SEMI &kp RET  &kp LS(DE_M) &kp LS(DE_O) &kp LS(DE_D) &kp LS(DE_I) &kp LS(DE_F) &kp LS(DE_Y) &kp DE_UNDER &kp LS(DE_R) &kp LS(DE_E) &kp LS(DE_G) &kp DE_LPAR &kp LS(DE_G) &kp LS(DE_P) &kp LS(DE_I) &kp LS(DE_O) &kp LS(DE_C) &kp DE_MINUS &kp DE_GT &kp LS(DE_A) &kp LS(DE_F) &kp LS(DE_R) &kp DE_LBKT &kp DE_N0 &kp DE_RBKT &kp DE_COMMA &kp DE_SPACE&kp LS(DE_G) &kp LS(DE_P) &kp LS(DE_I) &kp LS(DE_O) &kp DE_UNDER &kp LS(DE_A) &kp LS(DE_F) &kp LS(DE_R) &kp LS(DE_L) &kp DE_UNDER &kp LS(DE_A) &kp LS(DE_F) &kp LS(DE_S) &kp LS(DE_E) &kp LS(DE_L) &kp DE_N6 &kp DE_COMMA &kp RET    &kp LS(DE_G) &kp LS(DE_P) &kp LS(DE_I) &kp LS(DE_O) &kp DE_UNDER &kp LS(DE_A) &kp LS(DE_F) &kp DE_N2 &kp DE_UNDER &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_SPACE&kp DE_LT &kp DE_LT &kp DE_SPACE&kp LS(DE_G) &kp LS(DE_P) &kp LS(DE_I) &kp LS(DE_O) &kp DE_UNDER &kp LS(DE_A) &kp LS(DE_F) &kp LS(DE_R) &kp LS(DE_L) &kp DE_UNDER &kp LS(DE_A) &kp LS(DE_F) &kp LS(DE_S) &kp LS(DE_E) &kp LS(DE_L) &kp DE_N6 &kp DE_UNDER &kp LS(DE_P) &kp DE_O &kp DE_S &kp DE_RPAR &kp DE_SEMI &kp RET &kp RET &kp DE_RBRC &kp RET &kp RET &kp DE_V &kp DE_O &kp DE_I &kp DE_D &kp DE_SPACE&kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_G) &kp DE_E &kp DE_N &kp DE_E &kp DE_R &kp DE_A &kp DE_T &kp DE_O &kp DE_R &kp DE_N4 &kp DE_COLON &kp DE_COLON &kp DE_C &kp DE_O &kp DE_N &kp DE_F &kp DE_I &kp DE_G &kp DE_U &kp DE_R &kp DE_E &kp LS(DE_T) &kp DE_I &kp DE_M &kp DE_E &kp DE_R &kp DE_LPAR &kp DE_RPAR &kp DE_SPACE&kp DE_LBRC &kp RET  &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_P) &kp LS(DE_S) &kp LS(DE_C) &kp DE_SPACE&kp DE_EQUAL &kp DE_SPACE&kp DE_N8 &kp DE_N4 &kp DE_SPACE&kp DE_MINUS &kp DE_SPACE&kp DE_N1 &kp DE_SEMI &kp RET  &kp LS(DE_M) &kp LS(DE_O) &kp LS(DE_D) &kp LS(DE_I) &kp LS(DE_F) &kp LS(DE_Y) &kp DE_UNDER &kp LS(DE_R) &kp LS(DE_E) &kp LS(DE_G) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT  >;)
-    
-ZMK_BEHAVIOR(cppthree, macro,
-    wait-ms = <10>;
-    tap-ms = <10>;
-    bindings = < &kp LS(DE_C) &kp LS(DE_C) &kp LS(DE_M) &kp LS(DE_R) &kp DE_N1 &kp DE_COMMA &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_C) &kp LS(DE_C) &kp LS(DE_M) &kp LS(DE_R) &kp DE_N1 &kp DE_UNDER &kp LS(DE_O) &kp LS(DE_C) &kp DE_N1 &kp LS(DE_M) &kp DE_COMMA &kp DE_SPACE&kp DE_N6 &kp DE_SPACE&kp DE_LT &kp DE_LT &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_C) &kp LS(DE_C) &kp LS(DE_M) &kp LS(DE_R) &kp DE_N1 &kp DE_UNDER &kp LS(DE_O) &kp LS(DE_C) &kp DE_N1 &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_P) &kp DE_O &kp DE_S &kp DE_RPAR &kp DE_SEMI &kp RET  &kp LS(DE_S) &kp LS(DE_E) &kp LS(DE_T) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_C) &kp LS(DE_C) &kp LS(DE_E) &kp LS(DE_R) &kp DE_COMMA &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_C) &kp LS(DE_C) &kp LS(DE_E) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_C) &kp LS(DE_C) &kp DE_N1 &kp LS(DE_E) &kp DE_RPAR &kp DE_SEMI &kp RET  &kp LS(DE_S) &kp LS(DE_E) &kp LS(DE_T) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_E) &kp LS(DE_G) &kp LS(DE_R) &kp DE_COMMA &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_E) &kp LS(DE_G) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_U) &kp LS(DE_G) &kp DE_RPAR &kp DE_SEMI &kp RET  &kp LS(DE_C) &kp LS(DE_L) &kp LS(DE_E) &kp LS(DE_A) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_S) &kp LS(DE_R) &kp DE_COMMA &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_S) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_U) &kp LS(DE_I) &kp LS(DE_F) &kp DE_RPAR &kp DE_SEMI &kp RET  &kp LS(DE_S) &kp LS(DE_E) &kp LS(DE_T) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_C) &kp LS(DE_R) &kp DE_N1 &kp DE_COMMA &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_C) &kp LS(DE_R) &kp DE_N1 &kp DE_UNDER &kp LS(DE_C) &kp LS(DE_E) &kp LS(DE_N) &kp DE_RPAR &kp DE_SEMI &kp RET &kp RET &kp DE_RBRC &kp RET &kp RET &kp DE_V &kp DE_O &kp DE_I &kp DE_D &kp DE_SPACE&kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_G) &kp DE_E &kp DE_N &kp DE_E &kp DE_R &kp DE_A &kp DE_T &kp DE_O &kp DE_R &kp DE_N4 &kp DE_COLON &kp DE_COLON &kp DE_S &kp DE_E &kp DE_T &kp LS(DE_D) &kp DE_U &kp DE_T &kp DE_Y &kp LS(DE_C) &kp DE_Y &kp DE_C &kp DE_L &kp DE_E &kp DE_LPAR &kp DE_U &kp DE_I &kp DE_N &kp DE_T &kp DE_N8 &kp DE_UNDER &kp DE_T &kp DE_SPACE&kp DE_P &kp DE_E &kp DE_R &kp DE_C &kp DE_E &kp DE_N &kp DE_T &kp DE_RPAR &kp DE_SPACE&kp DE_LBRC &kp RET >;)
-    
-  ZMK_BEHAVIOR(cppfour, macro,
-    wait-ms = <10>;
-    tap-ms = <10>;
-    bindings = < &kp DE_P &kp DE_E &kp DE_R &kp DE_C &kp DE_E &kp DE_N &kp DE_T &kp DE_SPACE&kp DE_EQUAL &kp DE_SPACE&kp DE_A &kp DE_B &kp DE_S &kp DE_LPAR &kp DE_P &kp DE_E &kp DE_R &kp DE_C &kp DE_E &kp DE_N &kp DE_T &kp DE_RPAR &kp DE_SEMI &kp RET  &kp DE_P &kp DE_E &kp DE_R &kp DE_C &kp DE_E &kp DE_N &kp DE_T &kp DE_SPACE&kp DE_EQUAL &kp DE_SPACE&kp DE_P &kp DE_E &kp DE_R &kp DE_C &kp DE_E &kp DE_N &kp DE_T &kp DE_SPACE&kp DE_GT &kp DE_SPACE&kp DE_N1 &kp DE_N0 &kp DE_N0 &kp DE_SPACE&kp DE_QMARK &kp DE_SPACE&kp DE_N1 &kp DE_N0 &kp DE_N0 &kp DE_SPACE&kp DE_COLON &kp DE_SPACE&kp DE_P &kp DE_E &kp DE_R &kp DE_C &kp DE_E &kp DE_N &kp DE_T &kp DE_SEMI &kp RET  &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_C) &kp LS(DE_C) &kp LS(DE_R) &kp DE_N1 &kp DE_SPACE&kp DE_EQUAL &kp DE_SPACE&kp DE_LPAR &kp DE_F &kp DE_L &kp DE_O &kp DE_A &kp DE_T &kp DE_RPAR &kp DE_SPACE&kp DE_P &kp DE_E &kp DE_R &kp DE_C &kp DE_E &kp DE_N &kp DE_T &kp DE_SPACE&kp DE_FSLH &kp DE_SPACE&kp DE_N1 &kp DE_N0 &kp DE_N0 &kp DE_SPACE&kp DE_ASTRK &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_A) &kp LS(DE_R) &kp LS(DE_R) &kp DE_SEMI &kp RET &kp DE_RBRC &kp RET &kp RET &kp DE_V &kp DE_O &kp DE_I &kp DE_D &kp DE_SPACE&kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_G) &kp DE_E &kp DE_N &kp DE_E &kp DE_R &kp DE_A &kp DE_T &kp DE_O &kp DE_R &kp DE_N4 &kp DE_COLON &kp DE_COLON &kp DE_H &kp DE_A &kp DE_N &kp DE_D &kp DE_L &kp DE_E &kp LS(DE_I) &kp DE_N &kp DE_T &kp DE_E &kp DE_R &kp DE_R &kp DE_U &kp DE_P &kp DE_T &kp DE_LPAR &kp DE_RPAR &kp DE_SPACE&kp DE_LBRC &kp RET &kp RET  &kp DE_I &kp DE_F &kp DE_SPACE&kp DE_LPAR &kp LS(DE_R) &kp LS(DE_E) &kp LS(DE_A) &kp LS(DE_D) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_S) &kp LS(DE_R) &kp DE_COMMA &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_S) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_U) &kp LS(DE_I) &kp LS(DE_F) &kp DE_RPAR &kp DE_AMPS &kp DE_AMPS &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_C) &kp LS(DE_C) &kp LS(DE_R) &kp DE_N1 &kp DE_GT &kp DE_N0 &kp DE_RPAR &kp DE_RPAR &kp DE_SPACE&kp DE_LBRC &kp RET   &kp LS(DE_C) &kp LS(DE_L) &kp LS(DE_E) &kp LS(DE_A) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_S) &kp LS(DE_R) &kp DE_COMMA &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_S) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_U) &kp LS(DE_I) &kp LS(DE_F) &kp DE_RPAR &kp DE_SEMI &kp RET >;)
-    
-  ZMK_BEHAVIOR(cppfive, macro,
-    wait-ms = <10>;
-    tap-ms = <10>;
-    bindings = < &kp DE_ASTRK &kp DE_M &kp DE_UNDER &kp DE_P &kp DE_W &kp DE_M &kp LS(DE_O) &kp DE_U &kp DE_T &kp DE_EQUAL &kp DE_N1 &kp DE_SEMI &kp RET  &kp DE_RBRC &kp RET &kp RET  &kp DE_I &kp DE_F &kp DE_LPAR &kp LS(DE_R) &kp LS(DE_E) &kp LS(DE_A) &kp LS(DE_D) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_S) &kp LS(DE_R) &kp DE_COMMA &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_S) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_C) &kp LS(DE_C) &kp DE_N1 &kp LS(DE_I) &kp LS(DE_F) &kp DE_RPAR &kp DE_RPAR &kp DE_LBRC &kp RET   &kp LS(DE_C) &kp LS(DE_L) &kp LS(DE_E) &kp LS(DE_A) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_S) &kp LS(DE_R) &kp DE_COMMA &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_S) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_C) &kp LS(DE_C) &kp DE_N1 &kp LS(DE_I) &kp LS(DE_F) &kp DE_RPAR &kp DE_SEMI &kp RET   &kp DE_ASTRK &kp DE_M &kp DE_UNDER &kp DE_P &kp DE_W &kp DE_M &kp LS(DE_O) &kp DE_U &kp DE_T &kp DE_EQUAL &kp DE_N0 &kp DE_SEMI &kp RET  &kp DE_RBRC &kp RET  &kp DE_FSLH &kp DE_FSLH &kp DE_ASTRK &kp DE_M &kp DE_UNDER &kp DE_P &kp DE_W &kp DE_M &kp LS(DE_O) &kp DE_U &kp DE_T &kp DE_EQUAL &kp LS(DE_R) &kp LS(DE_E) &kp LS(DE_A) &kp LS(DE_D) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_E) &kp LS(DE_G) &kp LS(DE_R) &kp DE_COMMA &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_E) &kp LS(DE_G) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_U) &kp LS(DE_G) &kp DE_UNDER &kp LS(DE_P) &kp DE_O &kp DE_S &kp DE_RPAR &kp DE_SEMI &kp RET &kp DE_RBRC &kp RET &kp RET &kp RET &kp DE_V &kp DE_O &kp DE_I &kp DE_D &kp DE_SPACE&kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_G) &kp DE_E &kp DE_N &kp DE_E &kp DE_R &kp DE_A &kp DE_T &kp DE_O &kp DE_R &kp DE_N4 &kp DE_COLON &kp DE_COLON &kp DE_S &kp DE_E &kp DE_T &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_O) &kp DE_U &kp DE_T &kp DE_LPAR &kp LS(DE_D) &kp DE_I &kp DE_G &kp DE_I &kp DE_T &kp DE_A &kp DE_L &kp LS(DE_O) &kp DE_U &kp DE_T &kp DE_ASTRK &kp DE_SPACE&kp DE_P &kp DE_I &kp DE_N &kp DE_RPAR &kp DE_SPACE&kp DE_LBRC &kp RET  &kp DE_M &kp DE_UNDER &kp DE_P &kp DE_W &kp DE_M &kp LS(DE_O) &kp DE_U &kp DE_T &kp DE_SPACE&kp DE_EQUAL &kp DE_SPACE&kp DE_P &kp DE_I &kp DE_N &kp DE_SEMI &kp RET >;)
-  ZMK_BEHAVIOR(cppsix, macro,
-    wait-ms = <10>;
-    tap-ms = <10>;
-    bindings = < &kp DE_RBRC &kp RET &kp RET &kp DE_V &kp DE_O &kp DE_I &kp DE_D &kp DE_SPACE&kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_G) &kp DE_E &kp DE_N &kp DE_E &kp DE_R &kp DE_A &kp DE_T &kp DE_O &kp DE_R &kp DE_N4 &kp DE_COLON &kp DE_COLON &kp DE_C &kp DE_O &kp DE_N &kp DE_F &kp DE_I &kp DE_G &kp DE_U &kp DE_R &kp DE_E &kp LS(DE_I) &kp DE_N &kp DE_T &kp DE_E &kp DE_R &kp DE_R &kp DE_U &kp DE_P &kp DE_T &kp DE_LPAR &kp DE_RPAR &kp DE_SPACE&kp DE_LBRC &kp RET  &kp DE_A &kp DE_C &kp DE_T &kp DE_I &kp DE_V &kp DE_E &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_UNDER &kp LS(DE_I) &kp LS(DE_R) &kp LS(DE_Q) &kp LS(DE_H) &kp DE_A &kp DE_N &kp DE_D &kp DE_L &kp DE_E &kp DE_R &kp DE_SPACE&kp DE_EQUAL &kp DE_SPACE&kp DE_B &kp DE_I &kp DE_N &kp DE_D &kp DE_LPAR &kp DE_AMPS &kp LS(DE_C) &kp LS(DE_P) &kp DE_W &kp DE_M &kp LS(DE_G) &kp DE_E &kp DE_N &kp DE_E &kp DE_R &kp DE_A &kp DE_T &kp DE_O &kp DE_R &kp DE_N4 &kp DE_COLON &kp DE_COLON &kp DE_H &kp DE_A &kp DE_N &kp DE_D &kp DE_L &kp DE_E &kp LS(DE_I) &kp DE_N &kp DE_T &kp DE_E &kp DE_R &kp DE_R &kp DE_U &kp DE_P &kp DE_T &kp DE_COMMA &kp DE_SPACE&kp DE_T &kp DE_H &kp DE_I &kp DE_S &kp DE_RPAR &kp DE_SEMI &kp RET  &kp DE_UNDER &kp DE_UNDER &kp LS(DE_N) &kp LS(DE_V) &kp LS(DE_I) &kp LS(DE_C) &kp DE_UNDER &kp LS(DE_E) &kp DE_N &kp DE_A &kp DE_B &kp DE_L &kp DE_E &kp LS(DE_I) &kp LS(DE_R) &kp LS(DE_Q) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_UNDER &kp LS(DE_I) &kp LS(DE_R) &kp LS(DE_Q) &kp DE_N &kp DE_RPAR &kp DE_SEMI &kp RET  &kp LS(DE_S) &kp LS(DE_E) &kp LS(DE_T) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_D) &kp LS(DE_I) &kp LS(DE_E) &kp LS(DE_R) &kp DE_COMMA &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_D) &kp LS(DE_I) &kp LS(DE_E) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_U) &kp LS(DE_I) &kp LS(DE_E) &kp DE_RPAR &kp DE_SEMI &kp RET  &kp LS(DE_S) &kp LS(DE_E) &kp LS(DE_T) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N3 &kp DE_MINUS &kp DE_GT &kp LS(DE_D) &kp LS(DE_I) &kp LS(DE_E) &kp LS(DE_R) &kp DE_COMMA &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_D) &kp LS(DE_I) &kp LS(DE_E) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_C) &kp LS(DE_C) &kp DE_N1 &kp LS(DE_I) &kp LS(DE_E) &kp DE_RPAR &kp DE_SEMI &kp RET &kp DE_RBRC &kp RET  >;)
-    
-  ZMK_BEHAVIOR(ssdone, macro,
-    wait-ms = <10>;
-    tap-ms = <10>;
-    bindings = <&kp LS(DE_C) &kp LS(DE_S) &kp DE_E &kp DE_V &kp DE_E &kp DE_N &kp LS(DE_S) &kp DE_E &kp DE_G &kp DE_M &kp DE_E &kp DE_N &kp DE_T &kp LS(DE_D) &kp DE_I &kp DE_S &kp DE_P &kp DE_L &kp DE_A &kp DE_Y &kp DE_SPACE&kp DE_ASTRK &kp LS(DE_C) &kp LS(DE_S) &kp DE_E &kp DE_V &kp DE_E &kp DE_N &kp LS(DE_S) &kp DE_E &kp DE_G &kp DE_M &kp DE_E &kp DE_N &kp DE_T &kp LS(DE_D) &kp DE_I &kp DE_S &kp DE_P &kp DE_L &kp DE_A &kp DE_Y &kp DE_COLON &kp DE_COLON &kp DE_M &kp DE_UNDER &kp DE_I &kp DE_N &kp DE_S &kp DE_T &kp DE_A &kp DE_N &kp DE_C &kp DE_E &kp DE_SEMI &kp RET &kp DE_FSLH &kp DE_FSLH &kp DE_D &kp DE_O &kp DE_N &kp DE_T &kp DE_SPACE&kp DE_F &kp DE_O &kp DE_R &kp DE_G &kp DE_E &kp DE_T &kp DE_SPACE&kp DE_I &kp DE_N &kp DE_I &kp DE_T &kp DE_SPACE&kp DE_T &kp DE_I &kp DE_M &kp DE_E &kp DE_R &kp DE_SPACE&kp DE_A &kp DE_N &kp DE_D &kp DE_SPACE&kp DE_C &kp DE_O &kp DE_N &kp DE_F &kp DE_I &kp DE_G &kp DE_U &kp DE_R &kp DE_E &kp DE_SPACE&kp DE_I &kp DE_N &kp DE_T &kp DE_E &kp DE_R &kp DE_R &kp DE_U &kp DE_P &kp DE_T &kp RET &kp DE_E &kp DE_X &kp DE_T &kp DE_E &kp DE_R &kp DE_N &kp DE_SPACE&kp DE_DQT &kp LS(DE_C) &kp DE_DQT &kp DE_SPACE&kp DE_V &kp DE_O &kp DE_I &kp DE_D &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N1 &kp DE_UNDER &kp LS(DE_U) &kp LS(DE_P) &kp DE_UNDER &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N1 &kp DE_N0 &kp DE_UNDER &kp LS(DE_I) &kp LS(DE_R) &kp LS(DE_Q) &kp LS(DE_H) &kp DE_A &kp DE_N &kp DE_D &kp DE_L &kp DE_E &kp DE_R &kp DE_LPAR &kp DE_RPAR &kp DE_SPACE&kp DE_LBRC &kp RET  &kp DE_I &kp DE_F &kp DE_SPACE&kp DE_LPAR &kp LS(DE_R) &kp LS(DE_E) &kp LS(DE_A) &kp LS(DE_D) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N1 &kp DE_N0 &kp DE_MINUS &kp DE_GT &kp LS(DE_S) &kp LS(DE_R) &kp DE_COMMA &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_S) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_U) &kp LS(DE_I) &kp LS(DE_F) &kp DE_RPAR &kp DE_RPAR &kp DE_SPACE&kp DE_LBRC  &kp DE_FSLH &kp DE_FSLH &kp DE_I &kp DE_S &kp DE_T &kp DE_SPACE&kp DE_U &kp DE_P &kp DE_D &kp DE_A &kp DE_T &kp DE_E &kp DE_SPACE&kp DE_I &kp DE_N &kp DE_T &kp DE_E &kp DE_R &kp DE_R &kp DE_U &kp DE_P &kp DE_T &kp DE_SPACE&kp DE_F &kp DE_L &kp DE_A &kp DE_G &kp DE_SPACE&kp DE_N1 &kp RET   &kp DE_FSLH &kp DE_FSLH &kp DE_C &kp DE_L &kp DE_E &kp DE_A &kp DE_R &kp DE_SPACE&kp DE_I &kp DE_T &kp RET &kp RET>;)
-
- ZMK_BEHAVIOR(ssdtwo, macro,
-    wait-ms = <10>;
-    tap-ms = <10>;
-    bindings = <&kp LS(DE_C) &kp LS(DE_L) &kp LS(DE_E) &kp LS(DE_A) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N1 &kp DE_N0 &kp DE_MINUS &kp DE_GT &kp LS(DE_S) &kp LS(DE_R) &kp DE_COMMA &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_S) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_U) &kp LS(DE_I) &kp LS(DE_F) &kp DE_RPAR &kp DE_SEMI &kp RET   &kp LS(DE_C) &kp LS(DE_S) &kp DE_E &kp DE_V &kp DE_E &kp DE_N &kp LS(DE_S) &kp DE_E &kp DE_G &kp DE_M &kp DE_E &kp DE_N &kp DE_T &kp LS(DE_D) &kp DE_I &kp DE_S &kp DE_P &kp DE_L &kp DE_A &kp DE_Y &kp DE_COLON &kp DE_COLON &kp DE_M &kp DE_UNDER &kp DE_I &kp DE_N &kp DE_S &kp DE_T &kp DE_A &kp DE_N &kp DE_C &kp DE_E &kp DE_MINUS &kp DE_GT &kp DE_A &kp DE_C &kp DE_T &kp DE_I &kp DE_V &kp DE_A &kp DE_T &kp DE_E &kp LS(DE_N) &kp DE_E &kp DE_X &kp DE_T &kp LS(DE_D) &kp DE_I &kp DE_G &kp DE_I &kp DE_T &kp DE_LPAR &kp DE_RPAR &kp DE_SEMI &kp RET &kp RET  &kp DE_RBRC &kp RET  &kp DE_I &kp DE_F &kp DE_SPACE&kp DE_LPAR &kp LS(DE_R) &kp LS(DE_E) &kp LS(DE_A) &kp LS(DE_D) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N1 &kp DE_N0 &kp DE_MINUS &kp DE_GT &kp LS(DE_S) &kp LS(DE_R) &kp DE_COMMA &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_S) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_C) &kp LS(DE_C) &kp DE_N1 &kp LS(DE_I) &kp LS(DE_F) &kp DE_RPAR &kp DE_RPAR &kp DE_SPACE&kp DE_LBRC &kp RET   &kp LS(DE_C) &kp LS(DE_L) &kp LS(DE_E) &kp LS(DE_A) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_B) &kp LS(DE_I) &kp LS(DE_T) &kp DE_LPAR &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N1 &kp DE_N0 &kp DE_MINUS &kp DE_GT &kp LS(DE_S) &kp LS(DE_R) &kp DE_COMMA &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_UNDER &kp LS(DE_S) &kp LS(DE_R) &kp DE_UNDER &kp LS(DE_C) &kp LS(DE_C) &kp DE_N1 &kp LS(DE_I) &kp LS(DE_F) &kp DE_RPAR &kp DE_SEMI &kp RET   &kp LS(DE_C) &kp LS(DE_S) &kp DE_E &kp DE_V &kp DE_E &kp DE_N &kp LS(DE_S) &kp DE_E &kp DE_G &kp DE_M &kp DE_E &kp DE_N &kp DE_T &kp LS(DE_D) &kp DE_I &kp DE_S &kp DE_P &kp DE_L &kp DE_A &kp DE_Y &kp DE_COLON &kp DE_COLON &kp DE_M &kp DE_UNDER &kp DE_I &kp DE_N &kp DE_S &kp DE_T &kp DE_A &kp DE_N &kp DE_C &kp DE_E &kp DE_MINUS &kp DE_GT &kp DE_T &kp DE_U &kp DE_R &kp DE_N &kp LS(DE_O) &kp DE_F &kp DE_F &kp LS(DE_D) &kp DE_I &kp DE_G &kp DE_I &kp DE_T &kp DE_S &kp DE_LPAR &kp DE_RPAR &kp DE_SEMI >;)
- ZMK_BEHAVIOR(ssdthree, macro,
-    wait-ms = <10>;
-    tap-ms = <10>;
-    bindings = <&kp DE_RBRC &kp RET &kp DE_RBRC &kp RET &kp DE_I &kp DE_N &kp DE_SPACE&kp DE_D &kp DE_E &kp DE_R &kp DE_SPACE&kp DE_H &kp DE_E &kp DE_A &kp DE_D &kp DE_E &kp DE_R &kp RET &kp DE_POUND &kp DE_I &kp DE_N &kp DE_C &kp DE_L &kp DE_U &kp DE_D &kp DE_E &kp DE_SPACE&kp DE_DQT &kp DE_M &kp DE_B &kp DE_E &kp DE_D &kp DE_DOT &kp DE_H &kp DE_DQT &kp RET &kp DE_E &kp DE_X &kp DE_T &kp DE_E &kp DE_R &kp DE_N &kp DE_SPACE&kp DE_DQT &kp LS(DE_C) &kp DE_DQT &kp DE_SPACE&kp DE_V &kp DE_O &kp DE_I &kp DE_D &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N1 &kp DE_UNDER &kp LS(DE_U) &kp LS(DE_P) &kp DE_UNDER &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N1 &kp DE_N0 &kp DE_UNDER &kp LS(DE_I) &kp LS(DE_R) &kp LS(DE_Q) &kp LS(DE_H) &kp DE_A &kp DE_N &kp DE_D &kp DE_L &kp DE_E &kp DE_R &kp DE_LPAR &kp DE_RPAR &kp DE_SEMI &kp RET  &kp DE_F &kp DE_R &kp DE_I &kp DE_E &kp DE_N &kp DE_D &kp DE_SPACE&kp DE_V &kp DE_O &kp DE_I &kp DE_D &kp DE_SPACE&kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N1 &kp DE_UNDER &kp LS(DE_U) &kp LS(DE_P) &kp DE_UNDER &kp LS(DE_T) &kp LS(DE_I) &kp LS(DE_M) &kp DE_N1 &kp DE_N0 &kp DE_UNDER &kp LS(DE_I) &kp LS(DE_R) &kp LS(DE_Q) &kp LS(DE_H) &kp DE_A &kp DE_N &kp DE_D &kp DE_L &kp DE_E &kp DE_R &kp DE_LPAR &kp DE_RPAR &kp DE_SEMI &kp RET >;)
- 
-ZMK_BEHAVIOR(cpp, macro,
-    wait-ms = <10>;
-    tap-ms = <10>;
-    bindings = <&cppone &cpptwo >;)
- ZMK_BEHAVIOR(cppuno, macro,
-    wait-ms = <10>;
-    tap-ms = <10>;
-    bindings = <&cppthree &cppfour >;)
- ZMK_BEHAVIOR(cppdos, macro,
-    wait-ms = <10>;
-    tap-ms = <10>;
-    bindings = <&cppfive &cppsix>;)
- 
-
- ZMK_BEHAVIOR(amac, macro,
-    wait-ms = <0>;
-    tap-ms = <20>;
-    bindings = <&kp A>;)
-     ZMK_BEHAVIOR(rmac, macro,
-    wait-ms = <0>;
-    tap-ms = <20>;
-    bindings = <&kp R>;)
-     ZMK_BEHAVIOR(smac, macro,
-    wait-ms = <0>;
-    tap-ms = <20>;
-    bindings = <&kp S>;)
-     ZMK_BEHAVIOR(tmac, macro,
-    wait-ms = <0>;
-    tap-ms = <20>;
-    bindings = <&kp T>;)
-     ZMK_BEHAVIOR(nmac, macro,
-    wait-ms = <0>;
-    tap-ms = <20>;
-    bindings = <&kp N>;)
-     ZMK_BEHAVIOR(emac, macro,
-    wait-ms = <0>;
-    tap-ms = <20>;
-    bindings = <&kp E>;)
-     ZMK_BEHAVIOR(imac, macro,
-    wait-ms = <0>;
-    tap-ms = <20>;
-    bindings = <&kp I>;)
-     ZMK_BEHAVIOR(omac, macro,
-    wait-ms = <0>;
-    tap-ms = <20>;
-    bindings = <&kp O>;)
-
-
-//mod morph
-ZMK_BEHAVIOR(scModMorph, mod_morph,
-    bindings = <&sc>, <&capitalSlowC>;
-    mods = <(MOD_LSFT|MOD_RSFT)>;
-)
-
+// Home row mods macro
+#define HRML(k1,k2,k3,k4) &ht LSHFT k1  &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
+#define HRMR(k1,k2,k3,k4) &ht RGUI k1  &ht RCTRL k2  &ht RALT k3  &ht RSHFT k4
 
 / {
-
-
-
-  keymap {
-    compatible = "zmk,keymap";
-
-    base_layer {
-      bindings = <
-        // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-                 &kp Q      &hm ESC W    &hm LSHIFT F    &kp P         &kp B             &kp J          &kp L        &kp U       &hm ESC DE_Y  &kp LC(BSPC)
-        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-            &hma LCTRL A     &hmr LGUI R   &hms RET S  &hmt LALT T    &hm DE_SZ G         &kp M       &hmn RSHFT N   &hme LALT E   &hmi LGUI I    &hmo RCTRL O
-        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-          &lt NUMPAD DE_Z   &hm LALT X      &kp C      &hm LCTRL D   &hm LA(F4) V        &kp K       &hm RALT H    &kp COMMA     &kp DOT       &kp BSPC
-        // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                       &lt NAV TAB   &kp LSHFT          &lt SYM SPC   &lt SYM SPC
-        //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
-      >;
-    };
-      
-
-    nav_layer {
-      bindings = <
-        // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-               &mo ADJ      &kp C_PREV    &kp PG_UP      &kp C_NEXT &kp K_PLAY_PAUSE       ___           ___           ___           ___           ___
-        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                 ___        &kp HOME      &kp PG_DN      &kp END         ___          &kp C_BRI_UP       ___           ___           ___           ___
-        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                 ___           ___         &kp DEL     &kp C_VOL_DN  &kp C_VOL_UP      &kp C_BRI_DN    &kp F24       &kp F23      &kp PSCRN        ___
-        // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                           ___           ___               ___           ___
-        //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
-      >;
+    behaviors {
+        ht: hold_tap {
+            label = "hold_tap";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;
+            quick-tap-ms = <150>;
+            global-quick-tap;
+            bindings = <&kp>, <&kp>;
+        };
     };
 
-    sym_layer {
-      bindings = <
-        // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-               &kp F11       &kp F12   &kp DE_HASH &kp DE_LESS_THAN &kp DE_CARET &bracket      &brace         &paren     &kp RA(MINUS)     ___
-        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-               &hm F1 N1    &hm F2 N2    &hm F3 N3      &hm F4 N4        ___               ___      &hm F7 N7    &hm F8 N8    &hm F9 N9     &hm F10 N0
-        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                 ___           ___           ___        &kp DE_PLUS  &kp DE_QMARK      &kp DE_ACUTE &kp DE_MINUS       ___           ___           ___
-        // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                           ___           ___               ___          ___
-        //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
-      >;
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
     };
 
-    base_layer_num {
-      bindings = <
-        // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-                 ___        &hm F7 N7     &hm F8 N8    &hm F9 N9         ___               ___           &cpp       &ssdone          ___           ___
-        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                 ___        &hm F4 N4     &hm F5 N5    &hm F6 N6     &hm F10 N0            ___           &cppuno    &ssdtwo          ___           ___
-        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                 ___        &hm F1 N1     &hm F2 N2    &hm F3 N3         ___               ___           &cppdos    &ssdthree        ___           ___
-        // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                           ___           ___               ___           ___
-        //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
-      >;
-    };
+    keymap {
+        compatible = "zmk,keymap";
+        default_layer {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│  Q       │  W       │  E       │  R       │  T       │   │  Y       │  U       │  I       │  O       │  P       │
+            &kp Q      &kp W      &kp E      &kp R      &kp T          &kp Y      &kp U      &kp I      &kp O      &kp P
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  A       │  S       │  D       │  F       │  G       │   │  H       │  J       │  K       │  L       │ ' "      │
+            HRML(A,        S,         D,         F)     &kp G          &kp H      HRMR(J,        K,         L,        SQT)
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  Z       │  X       │  C       │  V       │  B       │   │  N       │  M       │ , <      │ . >      │ / ?      │
+            &kp Z      &kp X      &kp C      &kp V      &kp B          &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                            &lt 2 TAB   &kp ENTER     &kp SPACE  &lt 1 BSPC
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
 
-    adjust_layer {
-      bindings = <
-        // ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-             XXX           &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2   &out OUT_TOG           ___           XXX           ___           XXX           XXX
-        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-                &kp CAPS  &bt BT_SEL 3   &bt BT_SEL 4     XXX        &bt BT_CLR           ___           ___           ___           ___           XXX
-        // ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-            &sys_reset     &bootloader       XXX           XXX           XXX               XXX           XXX           XXX       &bootloader    &sys_reset
-        // ╰─────────────┴─────────────┴─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                                                           XXX           XXX               XXX           XXX
-        //                                           ╰─────────────┴─────────────╯   ╰─────────────┴─────────────╯
-      >;
+        right_layer {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│ INSERT   │  1       │  2       │  3       │          │   │ HOME     │ PAGE DN  │ PAGE UP  │ END      │  :       │
+            &kp INS    &kp N1     &kp N2     &kp N3     &trans         &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp COLON
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│ DELETE   │  4       │  5       │  6       │          │   │ LEFT     │ DOWN     │ UP       │ RIGHT    │  ;       │
+            &kp DEL    &kp N4     &kp N5     &kp N6     &trans         &kp LARW   &kp DARW   &kp UARW   &kp RARW   &kp SEMI
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│ CAPS     │  7       │  8       │  9       │  0       │   │          │          │          │          │          │
+           &caps_word  &kp N7     &kp N8     &kp N9     &kp N0         &trans     &trans     &trans     &trans     &trans
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &trans     &kp ESC        &trans     &trans
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+
+        left_layer {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│          │  [       │  {       │  }       │          │   │  ^       │  (       │  )       │  ]       │  ~       │
+            &trans     &kp LBKT   &kp LBRC   &kp RBRC   &trans         &kp CARET  &kp LPAR   &kp RPAR   &kp RBKT   &kp TILDE
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  !       │  @       │  #       │  $       │  %       │   │  *       │  -       │  =       │  \       │  `       │
+            &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT      &kp ASTRK  &kp MINUS  &kp EQUAL  &kp BSLH   &kp GRAVE
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │          │          │   │  &       │  _       │  +       │  │       │          │
+            &trans     &trans     &trans     &trans     &trans         &kp AMPS   &kp UNDER  &kp PLUS   &kp PIPE   &trans
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &trans     &trans         &trans     &trans
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+
+        tri_layer {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│ RESET    │          │          │          │PROFILE 0 │   │          │          │          │          │  RESET   │
+           &sys_reset  &trans     &trans     &trans    &bt BT_SEL 0    &trans     &trans     &trans     &trans    &sys_reset
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│BOOTLOADER│          │          │          │PROFILE 1 │   │          │          │          │          │BOOTLOADER│
+          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1    &trans     &trans     &trans     &trans    &bootloader
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │ CLEAR BT │PROFILE 2 │   │          │          │          │          │          │
+            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2    &trans     &trans     &trans     &trans     &trans
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &trans     &trans         &trans     &trans
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
     };
-  };
 };
